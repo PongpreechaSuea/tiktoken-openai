@@ -12,6 +12,29 @@ assert enc.decode(enc.encode("hello world")) == "hello world"
 enc = tiktoken.encoding_for_model("gpt-4o")
 ```
 
+```python
+import tiktoken
+
+def count_tokens(text, model="gpt-4o"):
+    enc = tiktoken.encoding_for_model(model)
+    print(enc.encode(text))
+    return len(enc.encode(text))
+
+text1 = "สวัสดีครับ"
+text2 = "This is another example."
+
+print(f"Text 1 tokens: {count_tokens(text1)}")
+print(f"Text 2 tokens: {count_tokens(text2)}")
+
+# output """
+# [4406, 187986, 21883, 2293, 123723]
+# Text 1 tokens: 5
+# [2500, 382, 3613, 4994, 13]
+# Text 2 tokens: 5
+# """
+
+```
+
 The open source version of `tiktoken` can be installed from PyPI:
 ```
 pip install tiktoken
